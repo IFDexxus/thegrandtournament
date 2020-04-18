@@ -33,15 +33,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
 	Duel.Hint(HINT_CARD,0,id)
 	--aroma effect
-	--cannot activate
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
-	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e2:SetTargetRange(0,1)
-	e2:SetValue(s.aclimit)
-	e2:SetReset(RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -55,21 +46,10 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e4:SetCode(EVENT_CHAIN_SOLVING)
 	e4:SetOperation(s.disop)
 	c:RegisterEffect(e4)
-	--cannot trigger
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_CANNOT_TRIGGER)
-	e5:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e5:SetTargetRange(0,0xa)
-	e5:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_SPELL))
-	c:RegisterEffect(e5)
 end
 function s.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	if rp~=tp and tl==LOCATION_SZONE and re:IsActiveType(TYPE_SPELL) then
 		Duel.NegateEffect(ev)
 	end
-end
-function s.aclimit(e,re,tp)
-	return re:GetHandler():IsType(TYPE_SPELL)
 end
