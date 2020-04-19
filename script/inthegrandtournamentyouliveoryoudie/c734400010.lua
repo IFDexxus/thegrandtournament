@@ -38,16 +38,21 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_USE_EXTRA_MZONE)
 		e2:SetValue(2)
+		e2:SetTarget(s.distg)
 		e2:SetLabelObject(e1)
 		Duel.RegisterEffect(e2,tp)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD)
-		e2:SetCode(EFFECT_USE_EXTRA_SZONE)
-		e2:SetValue(2)
-		e2:SetLabelObject(e1)
-		Duel.RegisterEffect(e2,tp)
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_FIELD)
+		e3:SetCode(EFFECT_USE_EXTRA_SZONE)
+		e3:SetValue(2)
+		e3:SetTarget(s.distg)
+		e3:SetLabelObject(e1)
+		Duel.RegisterEffect(e3,tp)
 end
 function s.con1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(ep,id)~=0
+end
+function s.distg(e,c)
+	return c:GetSequence()==0 or c:GetSequence()==4
 end
 
