@@ -1,4 +1,4 @@
--- Restricted Field
+-- Ryuuga's Ring
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -30,24 +30,15 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
-	Duel.Hint(HINT_CARD,0,id)
-	local c=e:GetHandler()
-	--Ground Collapse
-	local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD)
-		e2:SetCode(EFFECT_FORCE_MZONE)
-		e2:SetRange(LOCATION_MZONE)
-		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetTargetRange(1,0)
-		e2:SetValue(s.znval)
-		e2:SetLabelObject(e1)
-		Duel.RegisterEffect(e2,tp)
+	local g=Duel.GetDecktopGroup(e:GetHandler():GetControler(),1)
+	local g2=Duel.GetDecktopGroup(1-e:GetHandler():GetControler(),1)
+	
+	if #g>0 and g:GetFirst():GetFlagEffect(id)==0 then
+		Duel.ConfirmDecktop(tp,1)
+		g:GetFirst():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
+	if #g2>0 and g2:GetFirst():GetFlagEffect(id)==0 then
+		Duel.ConfirmDecktop(tp,1)
+		g2:GetFirst():RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,1)
+	end
 end
-function s.con1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(ep,id)~=0
-end
-function s.znval(e)
-	return ~(e:GetHandler()0x60)
-end
-
