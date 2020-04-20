@@ -1,4 +1,4 @@
--- Restricted Field
+-- Cyberse Nullification
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -33,21 +33,19 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
 	Duel.Hint(HINT_CARD,0,id)
 	local c=e:GetHandler()
-	--Ground Collapse
+	--force mzone
 	local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD)
-		e2:SetCode(EFFECT_FORCE_MZONE)
-		e2:SetRange(LOCATION_MZONE)
-		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetTargetRange(1,0)
-		e2:SetValue(s.znval)
-		e2:SetLabelObject(e1)
-		Duel.RegisterEffect(e2,tp)
-end
-function s.con1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(ep,id)~=0
-end
-function s.znval(e)
-	return ~(e:GetHandler()0x60)
-end
+    e2:SetType(EFFECT_TYPE_FIELD)
+    e2:SetCode(EFFECT_FORCE_MZONE)
+    e2:SetRange(LOCATION_MZONE)
+    e2:SetTargetRange(LOCATION_EXTRA,LOCATION_EXTRA)
+    e2:SetValue(s.fmval)
+    Duel.RegisterEffect(e2,tp)
 
+
+function s.fmval(e,c,fp,rp,r)
+    if rp==e:GetHandlerPlayer() then
+        return ~0x600060
+    end
+    return 0xffffffff
+end
