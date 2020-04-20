@@ -33,18 +33,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
     Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
     Duel.Hint(HINT_CARD,0,id)
     local c=e:GetHandler()
-	local zone=(1<<0)+(1<<4)+(1<<8)+(1<<12)
-    local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,0,~(zone))
-    Duel.Hint(HINT_ZONE,tp,dis)
-    --Ground Collapse
+   --Ground Collapse
     --disable field
-    local e2=Effect.CreateEffect(e:GetHandler())
+	local e2=Effect.CreateEffect(e:GetHandler())
     e2:SetType(EFFECT_TYPE_FIELD)
     e2:SetCode(EFFECT_DISABLE_FIELD)
-    e2:SetOperation(s.disop)
-    e2:SetLabel(dis)
+    e2:SetValue((1<<0)+(1<<4)+(1<<8)+(1<<12))
     Duel.RegisterEffect(e2,tp)
-end
-function s.disop(e,tp)
-    return e:GetLabel()
 end
