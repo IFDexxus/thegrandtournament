@@ -7,7 +7,7 @@ end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
     return aux.CanActivateSkill(tp)
 end
-function s.flipop(e,tp,eg,ep,ev,re,r,rp)
+function s.flipop(c,e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
 	Duel.Hint(HINT_CARD,0,id)
 	--aroma effect
