@@ -45,7 +45,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
     if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE+LOCATION_SZONE,PLAYER_NONE,0)>1 end
-    local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,0,s.spfilter)
+	local zone=(1<<1)+(1<<2)+(1<<3)
+	local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,0,~(zone))
     Duel.Hint(HINT_ZONE,tp,dis)
     e:SetLabel(dis)
 end
