@@ -30,29 +30,21 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
-	Duel.Hint(HINT_CARD,0,id)
-	local c=e:GetHandler()
-	--Ground Collapse
+    Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
+    Duel.Hint(HINT_CARD,0,id)
+    local c=e:GetHandler()
+	local zone=(1<<1)
+    local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,~(zone))
+    Duel.Hint(HINT_ZONE,tp,dis)
+    --Ground Collapse
     --disable field
     local e2=Effect.CreateEffect(e:GetHandler())
     e2:SetType(EFFECT_TYPE_FIELD)
     e2:SetCode(EFFECT_DISABLE_FIELD)
-	e2:SetTarget(s.target)
     e2:SetOperation(s.disop)
-    e2:SetLabelObject(e1)
+    e2:SetLabel(dis)
     c:RegisterEffect(e2,tp)
 end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-    if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE+LOCATION_SZONE,PLAYER_NONE,0)>1 end
-	local zone=(1<<1)+(1<<2)+(1<<3)
-	local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,0,~(zone))
-    Duel.Hint(HINT_ZONE,tp,dis)
-    e:SetLabel(dis)
-end
 function s.disop(e,tp)
-    return e:GetLabelObject():GetLabel()
-end
-function s.spfilter(c,e,tp)
-	return c:GetSequence()==1 or c:GetSequence()==2 or c:GetSequence()==3
+    return e:GetLabel()
 end
