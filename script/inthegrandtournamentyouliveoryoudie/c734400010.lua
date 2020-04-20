@@ -42,5 +42,5 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
     Duel.RegisterEffect(e2,tp)
 end
 function s.disop(e,tp)
-    return Duel.IsDuelType(DUEL_3_COLUMNS_FIELD) and 0xA or 0x11
+    return Duel.IsDuelType(DUEL_3_COLUMNS_FIELD) and 0xA0A or 0x1111
 end
