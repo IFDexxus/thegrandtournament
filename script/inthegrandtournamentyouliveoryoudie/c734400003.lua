@@ -7,7 +7,7 @@ end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
     return aux.CanActivateSkill(tp)
 end
-function s.flipop(c,e,tp,eg,ep,ev,re,r,rp)
+function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
 	Duel.Hint(HINT_CARD,0,id)
 	--aroma effect
@@ -16,7 +16,7 @@ function s.flipop(c,e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(511002521)
 	e1:SetOperation(s.activate)
 	e1:SetValue(LOCATION_SZONE)
-	c:RegisterEffect(e1,tp)
+	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
