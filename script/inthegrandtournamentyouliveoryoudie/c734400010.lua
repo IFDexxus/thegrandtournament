@@ -38,6 +38,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local e2=Effect.CreateEffect(e:GetHandler())
     e2:SetType(EFFECT_TYPE_FIELD)
     e2:SetCode(EFFECT_DISABLE_FIELD)
-    e2:SetValue((1<<0)+(1<<4)+(1<<8)+(1<<12))
+    e2:SetOperation(s.disop)
     Duel.RegisterEffect(e2,tp)
+end
+function s.disop(e,tp)
+    return Duel.IsDuelType(DUEL_3_COLUMNS_FIELD) and 0xA or 0x11
 end
