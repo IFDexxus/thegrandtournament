@@ -33,7 +33,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
     Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
     Duel.Hint(HINT_CARD,0,id)
     local c=e:GetHandler()
-	local zone=(1<<1)+(1<<2)+(1<<3)
+	local zone=(1<<0)+(1<<4)+(0<<0)+(0<<4)
     local dis=Duel.SelectDisableField(tp,4,LOCATION_MZONE+LOCATION_SZONE,0,~(zone))
     Duel.Hint(HINT_ZONE,tp,dis)
     --Ground Collapse
