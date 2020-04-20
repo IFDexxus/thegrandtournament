@@ -42,7 +42,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
     e2:SetCode(EFFECT_DISABLE_FIELD)
     e2:SetOperation(s.disop)
     e2:SetLabel(dis)
-    c:RegisterEffect(e2,tp)
+    Duel.RegisterEffect(e2,tp)
 end
 function s.disop(e,tp)
     return e:GetLabel()
