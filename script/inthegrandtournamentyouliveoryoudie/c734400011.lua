@@ -41,7 +41,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
     e2:SetValue(s.fmval)
     Duel.RegisterEffect(e2,tp)
 end
-function s.fmval(e,c,fp,rp,r)
+function s.fmval(e,fp,rp,r)
     if rp==e:GetHandlerPlayer() then
         return ~0x600060
     end
