@@ -63,9 +63,7 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	_replace_count=_replace_count+1
 	if _replace_count>_replace_max or not e:GetHandler():IsRelateToEffect(e) then return end
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	local ht=Duel.GetFieldGroupCount(p,LOCATION_HAND,0)
-	if ht<5 then Duel.Draw(p,5-ht,REASON_EFFECT) end
+	local ct=Duel.GetFieldGroupCount(p,LOCATION_HAND,0)
+	if ct<5 then Duel.Draw(p,5-ct,REASON_EFFECT) end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
-end
-function s.operation(e,tp,eg,ep,ev,re,r,rp)
 end
