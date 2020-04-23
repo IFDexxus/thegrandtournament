@@ -61,6 +61,7 @@ function s.damage(c, tp)
 end
 
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
-	eg:ForEach(s.damage)
+	your_cards = eg:Filter(s.cfilter,nil,tp)
+	your_cards:ForEach(s.damage)
 end
 
