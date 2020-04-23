@@ -35,43 +35,21 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--opd register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
 	local c=e:GetHandler()
-		--decrease tribute
-	--no summon limit
-		local e2=Effect.CreateEffect(c)
-		e2:SetDescription(aux.Stringid(id,0))
-		e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-		e2:SetCode(EVENT_PREDRAW)
-		e2:SetCondition(s.condition)
-		e2:SetTarget(s.target)
-		e2:SetOperation(s.operation)
-		e2:SetLabelObject(e1)
-		Duel.RegisterEffect(e2,tp)
+	
+	-- draw until you have 5 cards
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,0))
+	e2:SetCategory(CATEGORY_DRAW)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_DRAW_COUNT)
+    e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetRange(LOCATION_ALL)
+    e2:SetTargetRange(1,0)
+    e2:SetValue(s.operation)
+	Duel.RegisterEffect(e2,tp)
 end
-function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and Duel.GetDrawCount(tp)>0
-end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
-	if chk==0 then return ct<5 and Duel.IsPlayerCanDraw(tp,5-ct) end
-	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(5-ct)
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,5-ct)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(5-ct)
-		Duel.RegisterEffect(e1,tp)
-end
+
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
-	_replace_count=_replace_count+1
-	if _replace_count>_replace_max or not e:GetHandler():IsRelateToEffect(e) then return end
-	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local ct=Duel.GetFieldGroupCount(p,LOCATION_HAND,0)
-	if ct<5 then Duel.Draw(p,5-ct,REASON_EFFECT) end
-	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
+	return math.max(1, 5-ct)
 end
