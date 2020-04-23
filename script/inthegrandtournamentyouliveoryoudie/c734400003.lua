@@ -49,7 +49,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		local e9=e1:Clone()
 		e9:SetCode(EVENT_DISCARD)
 		tc:RegisterEffect(e9)
-		Duel
 	end
 end
 
