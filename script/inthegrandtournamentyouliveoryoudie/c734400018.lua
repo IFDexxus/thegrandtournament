@@ -66,7 +66,6 @@ function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ht=Duel.GetFieldGroupCount(p,LOCATION_HAND,0)
 	if ht<5 then Duel.Draw(p,5-ht,REASON_EFFECT) end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
-	end
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 end

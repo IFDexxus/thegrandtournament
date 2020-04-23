@@ -51,7 +51,6 @@ end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	if c==nil then return Duel.GetTurnCount()==1 end
 end
-end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 end
