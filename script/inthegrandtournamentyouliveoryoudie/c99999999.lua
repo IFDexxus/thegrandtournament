@@ -14,7 +14,6 @@ end
 function c99999999.duel_init(e,tp,eg,ep,ev,re,r,rp)
 	local group = Duel.GetMatchingGroup(c99999999.filter,tp,LOCATION_DECK,nil,nil)
 	if #group > 0 then
-		Duel.DisableShuffleCheck()
 		Duel.MoveToDeckBottom(group, tp)
 	end
 end
