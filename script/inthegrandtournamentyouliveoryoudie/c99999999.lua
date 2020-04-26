@@ -13,8 +13,8 @@ function s.initial_effect(c)
 end
 
 function s.duel_init(e,tp,eg,ep,ev,re,r,rp)
-	local group2 = Duel.GetMatchingGroup(s.filtertop,tp,LOCATION_DECK,nil,nil)
-	if #group2 > 0 then
+	local not_group = Duel.GetMatchingGroup(s.topf,tp,LOCATION_DECK,nil,nil)
+	if #not_group > 0 then
 		Duel.MoveToDeckBottom(group2, tp)
 	end
 	local group = Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,nil,nil)
@@ -27,6 +27,6 @@ function s.filter(c)
 	return c:IsCode(99999999)
 end
 
-function s.filtertop(c)
+function s.topf(c)
 	return not c:IsCode(51100904) or c:IsCode(51100903)or c:IsCode(51100906)or c:IsCode(51100907)or c:IsCode(51100909)
 end
