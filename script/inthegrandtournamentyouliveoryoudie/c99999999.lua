@@ -15,7 +15,7 @@ end
 function s.duel_init(e,tp,eg,ep,ev,re,r,rp)
 	local group2 = Duel.GetMatchingGroup(s.filtertop,tp,LOCATION_DECK,nil,nil)
 	if #group2 > 0 then
-		Duel.MoveToDeckBotton(group2, tp)
+		Duel.MoveToDeckBottom(group2, tp)
 	end
 	local group = Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,nil,nil)
 	if #group > 0 then
