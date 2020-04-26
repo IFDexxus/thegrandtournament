@@ -27,6 +27,6 @@ function s.filter(c)
 	return c:IsCode(99999999)
 end
 
-function s.filter2(c)
+function s.filtertop(c)
 	return c:IsCode(51100904) or c:IsCode(51100903)or c:IsCode(51100906)or c:IsCode(51100907)or c:IsCode(51100909)
 end
