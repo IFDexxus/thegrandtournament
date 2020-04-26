@@ -12,7 +12,7 @@ function s.initial_effect(c)
 	Duel.RegisterEffect(e1, tp)
 end
 
-function s.duel_init(e,tp,eg,ep,ev,re,r,rp)
+function s.duel_init(c,e,tp,eg,ep,ev,re,r,rp)
 	local group = Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,nil,nil)
 	if #group > 0 then
 		Duel.MoveToDeckBottom(group, tp)
@@ -28,5 +28,5 @@ function s.filter(c)
 end
 
 function s.topf(c)
-	return not c:IsCode(51100904) or c:IsCode(51100903) or c:IsCode(51100906) or c:IsCode(51100907) or c:IsCode(51100909)
+	return c:IsCode(51100904) or c:IsCode(51100903) or c:IsCode(51100906) or c:IsCode(51100907) or c:IsCode(51100909)
 end
