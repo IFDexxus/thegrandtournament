@@ -36,7 +36,7 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return true
+	return Duel.GetCurrentChain()==0 and Duel.GetTurnCount()==1
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
@@ -44,14 +44,24 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 end
 
 
+--function s.stop(e,tp,eg,ep,ev,re,r,rp)
+--	local c=e:GetHandler()
+--	local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,c)
+--	while #g>0 do
+--		local tc = g:GetFirst()
+--			Duel.MoveSequence(tc, 0)
+--			g:Remove(Card.IsCode, nil, tc:GetCode())
+--	end
+--end
+
 function s.stop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(s.stfilter,tp,LOCATION_DECK,0,c)
-	while #g>0 do
-		local tc = g:GetFirst()
-			Duel.MoveSequence(tc, 0)
-			g:Remove(Card.IsCode, nil, tc:GetCode())
-	end
+    local c=e:GetHandler()
+    local search=Duel.GetFirstMatchingCard
+    Duel.MoveSequence(search(s.IsHell,c:GetOwner(),LOCATION_DECK,0,nil), 0)
+    Duel.MoveSequence(search(s.IsBalthazar,c:GetOwner(),LOCATION_DECK,0,nil), 0)
+    Duel.MoveSequence(search(s.IsCaspar,c:GetOwner(),LOCATION_DECK,0,nil), 0)
+    Duel.MoveSequence(search(s.IsMechior,c:GetOwner(),LOCATION_DECK,0,nil), 0)
+    Duel.MoveSequence(search(s.IsHeaven,c:GetOwner(),LOCATION_DECK,0,nil), 0)
 end
 
 function s.IsHeaven(c)
