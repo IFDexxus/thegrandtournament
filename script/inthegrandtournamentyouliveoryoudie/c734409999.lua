@@ -21,7 +21,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local not_group = Duel.GetMatchingGroup(c99999999.not_filter,tp,LOCATION_DECK,nil,nil)
 	Duel.DisableShuffleCheck()
 
-	Debug.Message(send_to_top)
 	if #group < #not_group then
 		Duel.Remove(group, POS_FACEDOWN, REASON_RULE)
 		Duel.SendtoDeck(group,tp,1-send_to_top,REASON_RULE)
@@ -37,5 +36,5 @@ function s.filter(c)
 end
 
 function s.not_filter(c)
-	return c:IsCode(99999999)
+	return not c:IsCode(99999999)
 end
