@@ -1,5 +1,6 @@
 --FillerCard
-function c99999999.initial_effect(c)
+local s,id=GetID()
+function s.initial_effect(c)
     --Pre-duel
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -7,17 +8,25 @@ function c99999999.initial_effect(c)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetRange(LOCATION_DECK)
 	e1:SetCountLimit(1, 9999999)
-	e1:SetOperation(c99999999.duel_init)
+	e1:SetOperation(s.duel_init)
 	Duel.RegisterEffect(e1, tp)
 end
 
-function c99999999.duel_init(e,tp,eg,ep,ev,re,r,rp)
-	local group = Duel.GetMatchingGroup(c99999999.filter,tp,LOCATION_DECK,nil,nil)
+function s.duel_init(e,tp,eg,ep,ev,re,r,rp)
+	local group = Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,nil,nil)
 	if #group > 0 then
 		Duel.MoveToDeckBottom(group, tp)
 	end
+	local group = Duel.GetMatchingGroup(s.filtertop,tp,LOCATION_DECK,nil,nil)
+	if #group > 0 then
+		Duel.MoveToDeckTop(group, tp)
+	end
 end
 
-function c99999999.filter(c)
+function s.filter(c)
 	return c:IsCode(99999999)
+end
+
+function s.filter2(c)
+	return c:IsCode(51100904) or c:IsCode(51100903)or c:IsCode(51100906)or c:IsCode(51100907)or c:IsCode(51100909)
 end
