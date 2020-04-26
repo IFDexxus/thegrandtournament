@@ -8,8 +8,17 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_STARTUP)
 	e1:SetCountLimit(1)
 	e1:SetRange(0x5f)
+	e1:SetCondition(s.con)
 	e1:SetOperation(s.op)
 	c:RegisterEffect(e1)
+end
+
+function s.con(e,tp,eg,ep,ev,re,r,rp)
+	return	Duel.IsExistingMatchingCard(s.IsHell,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsBalthazar,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsCaspar,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsMechior,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsHeaven,tp,LOCATION_DECK,0,1,nil)
 end
 
 function s.op(e,tp,eg,ep,ev,re,r,rp)
