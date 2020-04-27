@@ -17,7 +17,7 @@ function s.con(e,tp,eg,ep,ev,re,r,rp)
 	return	Duel.IsExistingMatchingCard(s.IsHell,tp,LOCATION_DECK,0,1,nil) and
 			Duel.IsExistingMatchingCard(s.IsBalthazar,tp,LOCATION_DECK,0,1,nil) and
 			Duel.IsExistingMatchingCard(s.IsCaspar,tp,LOCATION_DECK,0,1,nil) and
-			Duel.IsExistingMatchingCard(s.IsMechior,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsMechior,tp,LOCATION_DECK,0,1,nil)
 end
 
 function s.op(e,tp,eg,ep,ev,re,r,rp)
