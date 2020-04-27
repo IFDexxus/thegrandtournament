@@ -27,9 +27,9 @@ function s.op(e,tp,eg,ep,ev,re,r,rp)
     local c=e:GetHandler()
     local search=Duel.GetFirstMatchingCard
     Duel.MoveSequence(search(s.IsHell,c:GetOwner(),LOCATION_DECK,0,nil), 0)
-    Duel.MoveSequence(search(s.IsBalthazar,c:GetOwner(),LOCATION_DECK,1,nil), 0)
-    Duel.MoveSequence(search(s.IsCaspar,c:GetOwner(),LOCATION_DECK,1,nil), 0)
-    Duel.MoveSequence(search(s.IsMechior,c:GetOwner(),LOCATION_DECK,1,nil), 0)
+    Duel.MoveSequence(search(s.IsBalthazar,c:GetOwner(),LOCATION_DECK,0,nil), 1)
+    Duel.MoveSequence(search(s.IsCaspar,c:GetOwner(),LOCATION_DECK,0,nil), 1)
+    Duel.MoveSequence(search(s.IsMechior,c:GetOwner(),LOCATION_DECK,0,nil), 1)
 end
 
 function s.IsMechior(c)
