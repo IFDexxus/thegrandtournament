@@ -30,16 +30,16 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 end
 
 function s.ignitionop(e,tp,eg,ep,ev,re,r,rp)
-	sort(e:GetHandler():GetOwner())
+	s.sort(tp)
 end
 
 function s.chainop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
-		sort(e:GetHandler():GetOwner())
+		s.sort(tp)
 	end
 end
 
-function sort(e:GetHandler():GetOwner())
+function s.sort(tp)
 	local group = Duel.GetMatchingGroup(s.filter,tp,LOCATION_DECK,nil,nil)
 	if #group < 1 then return end
 
