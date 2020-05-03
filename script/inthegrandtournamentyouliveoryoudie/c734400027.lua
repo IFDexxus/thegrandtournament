@@ -4,7 +4,8 @@ local register=function(what)
 	return function(...)
 		local params={...}
 		local tp=params[1]
-		if Duel.GetFlagEffect(tp,id)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+		if Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
+			Duel.SetFlagEffectLabel(tp,id,1)
 		end
 		return what(...)
 	end
@@ -26,7 +27,7 @@ function s.initial_effect(c)
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EFFECT_TOSS_DICE_CHOOSE)
-		ge1:SetCondition(function(e,tp,eg,ep,ev,re,r,rp)return Duel.GetFlagEffect(ep,id)>0 and Duel.GetFlagEffectLabel(ep,id)>0 end)
+		--ge1:SetCondition(function(e,tp,eg,ep,ev,re,r,rp)return Duel.GetFlagEffect(ep,id)>0 and Duel.GetFlagEffectLabel(ep,id)>0 end)
 		ge1:SetOperation(s.repop("dice",Duel.GetDiceResult,Duel.SetDiceResult,function(tp) Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(id,3)) return Duel.AnnounceNumber(tp,1,2,3,4,5,6) end))
 		Duel.RegisterEffect(ge1,0)
 		local ge2=ge1:Clone()
