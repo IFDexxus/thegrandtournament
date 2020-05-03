@@ -4,7 +4,7 @@ local register=function(what)
 	return function(...)
 		local params={...}
 		local tp=params[1]
-		if Duel.GetFlagEffect(tp,id)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0))
+		if Duel.GetFlagEffect(tp,id)>0 and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		end
 		return what(...)
 	end
