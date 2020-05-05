@@ -13,7 +13,9 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 
-
+function s.con(e,tp,eg,ep,ev,re,r,rp)
+	return	true
+end
 
 function s.op(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
