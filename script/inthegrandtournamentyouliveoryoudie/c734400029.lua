@@ -14,7 +14,11 @@ function s.initial_effect(c)
 end
 
 function s.con(e,tp,eg,ep,ev,re,r,rp)
-	return	true
+	return	Duel.IsExistingMatchingCard(s.IsHell,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsBalthazar,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsCaspar,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsMechior,tp,LOCATION_DECK,0,1,nil) and
+			Duel.IsExistingMatchingCard(s.IsHeaven,tp,LOCATION_DECK,0,1,nil)
 end
 
 function s.op(e,tp,eg,ep,ev,re,r,rp)
@@ -49,5 +53,5 @@ function s.IsBalthazar(c)
 end
 
 function s.IsHell(c)
-	return c:IsCode(511600139)
+	return c:IsCode(71344451)
 end
