@@ -18,6 +18,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	-- special summon kozaky and lose the duel if it is destroyed
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.CreateToken(tp,513000135)
-	if tc and Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)>0 then
+	if tc and Duel.SendtoDeck(tc,tp,0,REASON_RULE) then
 	end
 end
