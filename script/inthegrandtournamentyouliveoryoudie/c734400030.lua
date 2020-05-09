@@ -30,3 +30,4 @@ function s.draw(e,tp,eg,ep,ev,re,r,rp)
 		if tc and Duel.SendtoDeck(tc,tp,0,REASON_RULE) then
     end
 end
+end
