@@ -24,10 +24,9 @@ function s.draw(e,tp,eg,ep,ev,re,r,rp)
     if Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.Hint(HINT_SKILL_FLIP,0,id|(1<<32))
 		Duel.Hint(HINT_CARD,tp,id)
-		Duel.RegisterFlagEffect(ep,id,0,0,0)
+		Duel.RegisterFlagEffect(ep,id,tp,0,0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.CreateToken(tp,513000135)
-		if tc and Duel.SendtoDeck(tc,tp,0,REASON_RULE) then
+		Duel.SendtoDeck(tc,tp,0,REASON_RULE) then
     end
-end
 end
