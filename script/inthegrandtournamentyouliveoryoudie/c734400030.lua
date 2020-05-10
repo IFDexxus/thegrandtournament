@@ -14,6 +14,7 @@ function s.initial_effect(c)
 end
 
 function s.draw_con(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(ep,id)>0 then return end
 	return tp==Duel.GetTurnPlayer() and Duel.GetTurnCount()>1 and Duel.GetDrawCount(tp)>0
 end
 
