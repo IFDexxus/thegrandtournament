@@ -27,6 +27,6 @@ function s.draw(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterFlagEffect(ep,id,tp,0,0)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.CreateToken(tp,513000135)
-		Duel.SendtoDeck(tc,tp,0,REASON_RULE) then
+		Duel.SendtoDeck(tc,tp,0,REASON_RULE)
     end
 end
